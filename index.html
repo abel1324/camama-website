@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site oficial da Administração Municipal da Camama">
+    <title>Administração Municipal da Camama</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.3/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Administração Municipal da Camama</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:underline">Início</a></li>
+                    <li><a href="#sobre" class="hover:underline">Sobre</a></li>
+                    <li><a href="#campanhas" class="hover:underline">Campanhas</a></li>
+                    <li><a href="#contato" class="hover:underline">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Carousel -->
+        <section class="bg-blue-100 py-16">
+            <div class="container mx-auto text-center px-4" x-data="{ activeSlide: 0, slides: [
+                { img: 'https://source.unsplash.com/1200x600/?community', text: 'Bem-vindo ao Município da Camama!' },
+                { img: 'https://source.unsplash.com/1200x600/?development', text: 'Descubra nossas iniciativas de desenvolvimento.' },
+                { img: 'https://source.unsplash.com/1200x600/?culture', text: 'Participe dos nossos eventos culturais!' }
+            ] }">
+                <div class="relative">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <div x-show="activeSlide === index" class="absolute inset-0 transition-all duration-500">
+                            <img :src="slide.img" alt="Slide" class="w-full h-96 object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                <h2 class="text-4xl font-bold text-white" x-text="slide.text"></h2>
+                            </div>
+                        </div>
+                    </template>
+                    <button @click="activeSlide = (activeSlide - 1 + slides.length) % slides.length" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white px-4 py-2 rounded-full">&#8249;</button>
+                    <button @click="activeSlide = (activeSlide + 1) % slides.length" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white px-4 py-2 rounded-full">&#8250;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section id="sobre" class="py-16 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-gray-800">Sobre a Administração Municipal</h2>
+                <p class="text-gray-600 mt-4">Com a elevação da Camama a Município, trabalhamos para garantir o desenvolvimento sustentável e o bem-estar da nossa comunidade.</p>
+            </div>
+        </section>
+
+        <!-- Campanhas Section -->
+        <section id="campanhas" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-800 text-center">Campanhas e Iniciativas</h2>
+                <div class="grid md:grid-cols-3 gap-8 mt-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white shadow rounded overflow-hidden">
+                        <img src="https://source.unsplash.com/600x400/?community" alt="Campanha Meu Município" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-gray-800">Campanha “Meu Município”</h3>
+                            <p class="text-gray-600 mt-2">Engaje-se conosco para construir um município mais unido e desenvolvido.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white shadow rounded overflow-hidden">
+                        <img src="https://source.unsplash.com/600x400/?education" alt="Oficinas de Identidade Local" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-gray-800">Oficinas de Identidade Local</h3>
+                            <p class="text-gray-600 mt-2">Participe das nossas oficinas para explorar a história e cultura da Camama.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white shadow rounded overflow-hidden">
+                        <img src="https://source.unsplash.com/600x400/?teamwork" alt="Programa Voz do Povo" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-gray-800">Rádio Comunitária “Voz do Povo”</h3>
+                            <p class="text-gray-600 mt-2">Sintonize e participe de debates e esclarecimentos sobre o município.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Redes Sociais e Denúncias -->
+        <section class="py-16 bg-blue-600">
+            <div class="container mx-auto px-4 text-white">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Redes Sociais -->
+                    <div>
+                        <h2 class="text-3xl font-bold">Siga-nos nas Redes Sociais</h2>
+                        <p class="mt-4">Fique por dentro das últimas notícias e eventos do município.</p>
+                        <ul class="flex space-x-4 mt-4">
+                            <li><a href="#" class="text-white hover:text-gray-200">Facebook</a></li>
+                            <li><a href="#" class="text-white hover:text-gray-200">Twitter</a></li>
+                            <li><a href="#" class="text-white hover:text-gray-200">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <!-- Denúncias e Sugestões -->
+                    <div>
+                        <h2 class="text-3xl font-bold">Denúncias e Sugestões</h2>
+                        <p class="mt-4">Ajude-nos a melhorar nossos serviços enviando suas denúncias ou sugestões.</p>
+                        <form action="#" method="POST" class="mt-8">
+                            <div class="mb-4">
+                                <input type="text" name="assunto" placeholder="Assunto" class="w-full px-4 py-2 rounded text-gray-800">
+                            </div>
+                            <div class="mb-4">
+                                <textarea name="mensagem" placeholder="Sua Mensagem" rows="4" class="w-full px-4 py-2 rounded text-gray-800"></textarea>
+                            </div>
+                            <button type="submit" class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-gray-100">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Administração Municipal da Camama. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
